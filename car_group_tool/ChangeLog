@@ -1,0 +1,15 @@
+Sun Jul 13 23:42:29 EDT 2014 hsinyu@princeton.edu
+ 1. fornberg argument coe_cross pass from -nord2:nord2 (bug fix)
+ 2. cosmatics
+
+Fri Jul 11 19:30:53 EDT 2014 hsinyu@princeton.edu
+ 1. coeke(nord2:nord2,3)           -> coeke(nord2:nord2,3,3)
+ 2. fornberg(iddd,norder,coe,ierr) -> fornberg(iddd,norder,coe,coe_cross,ierr)
+ 3. lapmvs(exx_cg)/geterho(exx_vofr): add cross derivatives
+ 4. calculate the Jacobian in exx_gs / exx_module and store it in the coeke
+ 5*. the nscf parts are not working correctly and needs to be fixed
+
+Fri Jul  4 15:22:43 EDT 2014 hsinyu@princeton.edu
+ 1. Merge current CP version
+ 2. Merge current Module version
+ 3. Merge current PW version ( original socket.c does not build -- use the one in CPV )

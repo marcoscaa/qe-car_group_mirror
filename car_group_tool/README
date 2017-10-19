@@ -1,0 +1,1 @@
+new exx depend on stdc++ library, please put that in the LDLIB

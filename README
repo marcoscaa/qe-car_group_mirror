@@ -1,0 +1,81 @@
+This version supports the SCAN functional through LIBXC.
+
+# How to compile our QE version with LIBXC
+
+1) Clone both QE and Libxc repositories
+
+  $ git clone git@bitbucket.org:marcoscaa/qe-car_group_mirror.git
+
+  $ git clone git@bitbucket.org:marcoscaa/libxc-car_grp_mirror.git
+
+2) You need to compile libxc before compiling QE. Go to the libxc folder and
+     compile the library using:
+
+  $ ./autogen.sh
+  $ ./configure --prefix=PATH/TO/LIBXC
+  $ make
+  $ make install
+
+3) Now, run the configure script in the QE folder:
+
+  $ ./configure
+
+4) You will have to change the make.sys file yourself in order to link libxc to QE.
+   Inside make.sys, add
+
+   4.1. MANUAL_DFLAGS  = -D__LIBXC
+   4.2. LD_LIBS        = -lstdc++ -LPATH/TO/LIBXC/lib -lxcf90 -lxc
+
+5) Now, you're ready to compile the code. Please note that SCAN is only available
+   in PW and CP code. If you want to compile PW, just run (parallel make should
+   work):
+
+  $ make -j 4 pw
+
+6) In your input file (CP or PW), add the following line in the &SYSTEM section:
+ 
+   input_dft='SCAN'
+
+****** KNOWN LIMITATIONS ******
+
+1) Our implementation does not support ultrassoft pseudopotentials.
+
+2) Analytical stress tensor in PW does not work with pseudopotentials with non-
+    linear core correction
+
+3) We still don't have metagga pseudopotentials. We are currently using PBE pseudo.
+
+**********************************
+
+This is the distribution of the Quantum ESPRESSO suite of codes (ESPRESSO: 
+opEn-Source Package for Research in Electronic Structure, Simulation, 
+and Optimization), promoted by the IOM-DEMOCRITOS National Simulation Center 
+of the Italian CNR (http://www.democritos.it). 
+
+Quick installation instructions for the impatient:
+   ./configure [options]
+   make all
+
+############
+Please note that in order to use SCAN, you should include some 
+lines to the make.sys file. Please check the example script (make.sys.libxc).
+############
+
+("make" alone prints a list of acceptable targets). Binaries go in bin/.
+For more information, see the general documentation in directory Doc/, 
+package-specific documentation in */Doc/, and the web site
+http://www.quantum-espresso.org/
+
+All the material included in this distribution is free software;
+you can redistribute it and/or modify it under the terms of the GNU
+General Public License as published by the Free Software Foundation;
+either version 2 of the License, or (at your option) any later version.
+
+These programs are distributed in the hope that they will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+675 Mass Ave, Cambridge, MA 02139, USA.

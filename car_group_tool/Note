@@ -1,0 +1,4 @@
+HK:
+  1. to make driver / cpbo work on Edison / Cori:
+    The driver / cpbo code only works if the driver.f90 is compiled with -check all flag (intel).
+    (it seems to be a cpbo issue, but not sure...)

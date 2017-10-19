@@ -1,0 +1,9 @@
+1. no archeive of M_TDDFPT
+2. parallel make of PW need twice to finish (check make.depend)
+3.[?] make nord2 a variable instead of a parameter ..
+4. use the routine PHonon/PH/commutator_Hx_psi.f90 and change the evc in to x|psi_v> to get higher electric multipoles
+5. relax contraint on ibrav in the general cell derivative current condition to use easier formular is (isotropic.and.(ibrav.eq.1))
+6. a. on mira the include/c_defs.h needs to be modified to remove the underscores  i.e. 
+      remove ## _
+   b. another issue of the compiling cp.x on mira is that the mpixlc_r compiler is currently not working with sockets.c
+      use gcc to generate the sockets.o file mannually.

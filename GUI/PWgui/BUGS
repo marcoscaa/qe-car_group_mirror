@@ -1,0 +1,6 @@
+BUGS -- known bugs. 
+
+* module/pw/: if ntyp is changed the status (enabled/dispabled) of
+  widgets associated with the ntyp gets always enabled 
+
+BUGS ends here.

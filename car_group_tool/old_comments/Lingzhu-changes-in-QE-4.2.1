@@ -1,0 +1,109 @@
+CPV/cp_restart.f90:!Lingzhu Kong
+CPV/cp_restart.f90:!Lingzhu Kong
+CPV/cp_restart.f90:!Lingzhu Kong
+CPV/cp_restart.f90:    SUBROUTINE cp_read_wfc_Kong( ndr, tmp_dir, ik, nk, iss, nspin, c2, tag )
+CPV/cp_restart.f90:    END SUBROUTINE cp_read_wfc_Kong
+CPV/cpr.f90:        !CALL start_clock( 'wf_closing' )    !Lingzhu Kong
+CPV/cpr.f90:        !CALL stop_clock( 'wf_closing' )    !Lingzhu Kong
+CPV/exx_cg.f90:! Lingzhu Kong
+CPV/exx_es.f90:! Lingzhu Kong
+CPV/exx_es.original.f90:! Lingzhu Kong
+CPV/exx_gs.f90:! Lingzhu Kong
+CPV/exx_gs.modified.tcg.psil.generic.f90:! Lingzhu Kong
+CPV/exx_gs.original.f90:! Lingzhu Kong
+CPV/exx_pair.f90:!  Lingzhu Kong
+CPV/exx_setup.f90:! Adapted from PARSEC by Lingzhu Kong. http://parsec.ices.utexas.edu/
+CPV/exx_vofr.f90:! Adapted from PARSEC by Lingzhu Kong,  http://parsec.ices.utexas.edu/
+CPV/exx_vofr.modified.f90:! Adapted from PARSEC by Lingzhu Kong,  http://parsec.ices.utexas.edu/
+CPV/exx_vofr.original.f90:! Adapted from PARSEC by Lingzhu Kong,  http://parsec.ices.utexas.edu/
+CPV/forces.f90:      USE control_flags,          ONLY: iprint, lwfpbe0, lwfpbe0nscf   ! changed by Lingzhu Kong
+CPV/forces.f90:      REAL(DP)    :: tmp1, tmp2                                 ! Lingzhu Kong
+CPV/forces.f90:!Lingzhu Kong
+CPV/forces.f90:!Lingzhu Kong
+CPV/forces.f90:!Lingzhu Kong
+CPV/forces.f90:!Lingzhu Kong
+CPV/forces.f90:!Lingzhu Kong
+CPV/forces_good.f90:      USE control_flags,          ONLY: iprint, lwfpbe0, lwfpbe0nscf   ! changed by Lingzhu Kong
+CPV/forces_good.f90:      REAL(DP)    :: tmp1, tmp2                                 ! Lingzhu Kong
+CPV/forces_good.f90:!Lingzhu Kong
+CPV/forces_good.f90:!Lingzhu Kong
+CPV/forces_good.f90:!Lingzhu Kong
+CPV/forces_good.f90:!Lingzhu Kong
+CPV/forces_good.f90:!Lingzhu Kong
+CPV/init_run.f90:                                       lwfpbe0nscf  ! Lingzhu Kong
+CPV/init_run.f90:  USE wavefunctions_module,     ONLY : c0, cm, cp, cv0  ! cv0 added by Lingzhu Kong
+CPV/init_run.f90:  USE wannier_base,             ONLY : vnbsp ! vnbsp added by Lingzhu Kong
+CPV/init_run.f90:  USE cp_restart,               ONLY : cp_read_wfc_Kong            ! Lingzhu Kong
+CPV/init_run.f90:  IF(lwfpbe0nscf) ALLOCATE(cv0( ngw, vnbsp ) )   ! Lingzhu Kong
+CPV/init_run.f90:  IF(lwfpbe0nscf)cv0= ( 0.D0, 0.D0 )    !Lingzhu Kong
+CPV/init_run.f90:                       !Kong, read the valence orbitals
+CPV/init_run.f90:        CALL cp_read_wfc_Kong( 36, tmp_dir, 1, 1, 1, 1, cv0, 'v' )
+CPV/input.f90:     USE control_flags,         ONLY : lneb, lpath, lwf, lwfnscf, lwfpbe0, lwfpbe0nscf   ! changed by Lingzhu Kong
+CPV/input.f90:!Lingzhu Kong
+CPV/input.f90:                TRIM( calculation ) == 'pbe0-nscf'  )    ! Lingzhu Kong
+CPV/input.f90:!Lingzhu Kong
+CPV/input.f90:!Lingzhu Kong
+CPV/mainvar.f90:  USE control_flags,     ONLY : lwfnscf, lwfpbe0, lwfpbe0nscf             ! Lingzhu Kong
+CPV/mainvar.f90:  REAL(DP),    ALLOCATABLE :: rhopr(:,:)   ! Lingzhu Kong
+CPV/mainvar.f90:! Lingzhu Kong
+CPV/mainvar.f90:                             me_image, ortho_comm_id, nproc_image   ! changed by Lingzhu Kong
+CPV/mainvar.f90:!Lingzhu Kong
+CPV/mainvar.f90:!Lingzhu Kong
+CPV/mainvar.f90:!Lingzhu Kong
+CPV/move_electrons.f90:  USE control_flags,        ONLY : lwf, tfor, tprnfor, thdyn, lwfpbe0, lwfpbe0nscf  ! changed by Lingzhu Kong
+CPV/move_electrons.f90:  USE wavefunctions_module, ONLY : cv0, c0, cm, phi => cp  ! cv0 added by Lingzhu Kong
+CPV/move_electrons.f90:!Lingzhu Kong
+CPV/print_out.f90:      USE control_flags,     ONLY : iprint, textfor, iprsta, do_makov_payne, lwfpbe0, lwfpbe0nscf  ! Lingzhu Kong
+CPV/print_out.f90:!Lingzhu Kong / BS / RAD
+CPV/print_out.f90:!Lingzhu Kong / BS / RAD
+CPV/print_out.f90:!Lingzhu Kong
+CPV/restart.f90:      USE cp_restart,     ONLY : cp_readfile, cp_read_cell, cp_read_wfc, cp_read_wfc_Kong
+CPV/wf.4.2.1.BS.f90:! IF(me.EQ.1) THEN    !Lingzhu Kong
+CPV/wf.4.2.1.BS.f90:! END IF    !Lingzhu Kong
+CPV/wf.4.2.1.BS.f90:! IF (me.EQ.1) THEN              !Lingzhu Kong
+CPV/wf.4.2.1.BS.f90:! END IF              !Lingzhu Kong
+CPV/wf.4.2.1.modified.f90:! IF(me.EQ.1) THEN    !Lingzhu Kong
+CPV/wf.4.2.1.modified.f90:! END IF    !Lingzhu Kong
+CPV/wf.4.2.1.modified.f90:! IF (me.EQ.1) THEN              !Lingzhu Kong
+CPV/wf.4.2.1.modified.f90:! END IF              !Lingzhu Kong
+CPV/wf.4.2.1.original.f90:! IF(me.EQ.1) THEN    !Lingzhu Kong
+CPV/wf.4.2.1.original.f90:! END IF    !Lingzhu Kong
+CPV/wf.4.2.1.original.f90:! IF (me.EQ.1) THEN              !Lingzhu Kong
+CPV/wf.4.2.1.original.f90:! END IF              !Lingzhu Kong
+CPV/wf.f90:! IF(me.EQ.1) THEN    !Lingzhu Kong
+CPV/wf.f90:! END IF    !Lingzhu Kong
+CPV/wf.f90:! IF (me.EQ.1) THEN              !Lingzhu Kong
+CPV/wf.f90:! END IF              !Lingzhu Kong
+
+
+
+Modules/control_flags.f90:    !  Lingzhu Kong
+Modules/electrons_base.f90:! Lingzhu Kong, for empty states
+Modules/electrons_base.f90:!Lingzhu Kong
+Modules/energies.f90:        USE control_flags, ONLY : lwfpbe0, lwfpbe0nscf              ! Lingzhu Kong
+Modules/energies.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/funct.f90:!Lingzhu Kong
+Modules/input_parameters.f90:          'cp-wf-nscf','cp-wf-pbe0', 'pbe0-nscf'/   ! Lingzhu Kong
+Modules/input_parameters.f90:!Lingzhu Kong
+Modules/input_parameters.f90:!Lingzhu Kong
+Modules/read_namelists.f90:!Lingzhu Kong
+Modules/read_namelists.f90:!Lingzhu Kong
+Modules/read_namelists.f90:!Lingzhu Kong
+Modules/read_namelists.f90:               TRIM( calculation ) == 'pbe0-nscf'  .OR. &        !Lingzhu Kong
+Modules/read_namelists.f90:              TRIM( calculation ) == 'pbe0-nscf' ) THEN  !Lingzhu Kong
+Modules/wannier_base.f90:!Lingzhu Kong
+Modules/wannier_base.f90:!Lingzhu Kong
+Modules/wannier_base.f90:! Lingzhu Kong
+Modules/wannier_base.f90:!Lingzhu Kong
+Modules/wavefunctions.f90:     COMPLEX(DP), ALLOCATABLE :: cv0(:,:) ! Lingzhu Kong
+Modules/wavefunctions.f90:       IF( ALLOCATED( cv0) ) DEALLOCATE( cv0)   ! Lingzhu Kong
+Modules/xml_io_base.f90:      USE control_flags,     ONLY : lwfnscf, lwfpbe0nscf             ! Lingzhu Kong
+Modules/xml_io_base.f90:!         IF ( ionode ) OPEN(60,file='cp_wf.dat',status='unknown',form='unformatted')  ! Lingzhu Kong
+Modules/xml_io_base.f90:!            IF ( ionode ) write(60)wtmp(1:igwx)   !Lingzhu Kong
+Modules/xml_io_base.f90:!          IF ( ionode ) close(60)   !Lingzhu Kong
