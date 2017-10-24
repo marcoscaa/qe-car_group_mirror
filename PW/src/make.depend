@@ -1178,6 +1178,10 @@ plugin_ext_forces.o : ../../Modules/kind.o
 plugin_ext_forces.o : ../../Modules/mp.o
 plugin_ext_forces.o : ../../Modules/mp_images.o
 plugin_ext_forces.o : ../../Modules/plugin_flags.o
+plugin_ext_forces.o : ../../Modules/cell_base.o
+plugin_ext_forces.o : ../../Modules/ions_base.o
+plugin_ext_forces.o : ../../Modules/control_flags.o
+plugin_ext_forces.o : pwcom.o
 plugin_init_cell.o : ../../Modules/fft_base.o
 plugin_init_cell.o : ../../Modules/kind.o
 plugin_init_cell.o : ../../Modules/plugin_flags.o
@@ -1746,6 +1750,7 @@ stres_mgga.o : ../../Modules/wavefunctions.o
 stres_mgga.o : ../../Modules/mp.o
 stres_mgga.o : ../../Modules/mp_bands.o
 stres_mgga.o : pwcom.o
+stres_mgga.o : scf_mod.o
 stress.o : ../../Modules/cell_base.o
 stress.o : ../../Modules/constants.o
 stress.o : ../../Modules/control_flags.o
