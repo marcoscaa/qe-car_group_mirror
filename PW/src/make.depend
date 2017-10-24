@@ -1194,6 +1194,10 @@ plugin_initialization.o : ../../Modules/io_files.o
 plugin_initialization.o : ../../Modules/io_global.o
 plugin_initialization.o : ../../Modules/kind.o
 plugin_initialization.o : ../../Modules/plugin_flags.o
+plugin_initialization.o : dynamics_module.o
+plugin_initialization.o : ../../Modules/ions_base.o
+plugin_initialization.o : ../../Modules/constants.o
+plugin_initialization.o : pwcom.o
 plugin_int_forces.o : ../../Modules/cell_base.o
 plugin_int_forces.o : ../../Modules/control_flags.o
 plugin_int_forces.o : ../../Modules/fft_base.o

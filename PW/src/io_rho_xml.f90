@@ -109,11 +109,14 @@ MODULE io_rho_xml
       USE scf,              ONLY : scf_type
       USE mp_images,        ONLY : intra_image_comm
       USE mp,               ONLY : mp_bcast, mp_sum
+      USE io_files,         ONLY : tmp_dir, prefix
+      USE xml_io_base,      ONLY : check_file_exst
       !
       IMPLICIT NONE
       TYPE(scf_type),   INTENT(INOUT)        :: rho
       INTEGER,          INTENT(IN)           :: nspin
       CHARACTER(LEN=*), INTENT(IN), OPTIONAL :: extension
+      CHARACTER(LEN=256) :: filename
       LOGICAL :: lexist
       INTEGER :: iunocc, iunpaw, ierr
       INTEGER, EXTERNAL :: find_free_unit
@@ -174,9 +177,13 @@ MODULE io_rho_xml
       END IF
       !
       IF ( dft_is_meta() ) THEN
+         !
+         ! Allows restarting from PBE
+         filename =  TRIM( tmp_dir ) // TRIM( prefix ) // '.save/charge-density.kinedens.dat'
+         lexist     =  check_file_exst( TRIM(filename) )
          !MCA/HK: read kinetic energy density here
          !WRITE(stdout,'(5x,"Warning: cannot read meta-gga kinetic terms: not implemented.")')
-         CALL read_rho_only( rho%kin_r, nspin, 'kinedens' // extension )
+         IF (lexist) CALL read_rho_only( rho%kin_r, nspin, 'kinedens' // extension )
       END IF
 
       RETURN

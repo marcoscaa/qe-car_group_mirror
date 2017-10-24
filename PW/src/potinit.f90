@@ -210,6 +210,10 @@ SUBROUTINE potinit()
      ! ... (and sometimes it is much worse) than starting from zero
      !
      !!! fact = 0.0_dp
+     ! Allows restarting from PBE
+     filename =  TRIM( tmp_dir ) // TRIM( prefix ) // '.save/charge-density.kinedens.dat'
+     exst     =  check_file_exst( TRIM(filename) )
+     !
      DO is = 1, nspin
         ! MCA/HK: if restarting, read from file instead
         !         rho%kin_r is read inside pw_readfile 
