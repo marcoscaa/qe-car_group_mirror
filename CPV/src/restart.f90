@@ -132,14 +132,16 @@
       USE io_files,       ONLY : tmp_dir
       USE electrons_base, ONLY : nbnd, nbsp, nspin, nupdwn, iupdwn, keep_occ, nbspx
       USE gvecw,          ONLY : ngw
-      USE ions_base,      ONLY : nsp, na, cdmi, taui
+      USE ions_base,      ONLY : nsp, na, cdmi, taui, vel_srt ! MCA
       USE cp_restart,     ONLY : cp_readfile, cp_read_cell, cp_read_wfc
       USE ensemble_dft,   ONLY : tens
       USE autopilot,      ONLY : event_step, event_index, max_event_step
       USE cp_autopilot,   ONLY : employ_rules
-      USE control_flags,  ONLY : ndr
+      USE control_flags,  ONLY : ndr, tv0rd !MCA
       USE cp_interfaces,  ONLY : c_bgrp_pack
-      USE wannier_module,   ONLY : wfc ! BS
+      USE wannier_module, ONLY : wfc ! BS
+      USE cell_base,      ONLY : ainv, r_to_s !MCA
+      USE time_step,      ONLY : delt ! MCA
 !
       implicit none
       INTEGER, INTENT(in) :: flag
@@ -194,6 +196,20 @@
                 vels, tausm, velsm, fion, vnhp, xnhp0, xnhpm, nhpcl,nhpdim,occ_ , &
                 occ_ , lambda, lambdam, b1, b2, b3, &
                 xnhe0, xnhem, vnhe, ekincm, c0, cm, wfc ) ! BS added wfc
+      END IF
+      !
+      ! MCA working area
+      IF ( tv0rd ) THEN
+         !
+         ! ... vel_srt=starting velocities, read from input, are brough to
+         ! ... scaled axis and copied into array vels. Since velocites are
+         ! ... not actually used by the Verlet algorithm, we set tau(t-dt)
+         ! ... to tausm=tau(t)-v*delta t so that the Verlet algorithm will 
+         ! ... start with the correct velocity
+         !
+         CALL r_to_s( vel_srt, vels, na, nsp, ainv )
+         tausm(:,:) =  taus(:,:) - vels(:,:)*delt
+         velsm(:,:) =  vels(:,:)
       END IF
       !
       ! AutoPilot (Dynamic Rules) Implementation
